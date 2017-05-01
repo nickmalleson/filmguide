@@ -9,18 +9,9 @@ import scala.collection.mutable.ArrayBuffer
 trait ScheduleParser {
 
   /**
-    * Get the schedule data that needs to be parsed. Return an array where each element is the schedule for a
-    * day. The first element is the current day, reamining elements are for subsequent days.
+    * Get the schedule and parse it, returning an array of Program objects.
     */
-  def getSchedule() : ArrayBuffer[String] = {}
-
-  /**
-    * Parse the schedule
-    */
-  def parseSchedule( schedule: String) : ArrayBuffer[Program]
-
-
-
+  def getProgrammes(): ArrayBuffer[Program]
 
 
 

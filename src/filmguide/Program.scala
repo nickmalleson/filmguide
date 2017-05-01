@@ -1,6 +1,5 @@
 package filmguide
 
-import java.util.Date
 
 /**
   * Store information about a TV programme or film
@@ -10,7 +9,7 @@ import java.util.Date
   * @param name The name of the programme
   * @param scheduled The date that the programme is scheduled to take place
   */
-case class Program ( name: String, scheduled:Date) {
+case class Program ( name: String, scheduled:String) {
 
 
 }
