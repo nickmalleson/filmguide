@@ -11,7 +11,7 @@ object Main {
     */
   def main( args:Array[String] ):Unit = {
 
-    val parser = BlepParser()
+    val parser = BlebParser()
     val programmes = parser.getProgrammes()
 
 

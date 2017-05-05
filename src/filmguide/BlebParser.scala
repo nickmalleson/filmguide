@@ -12,7 +12,7 @@ import scala.collection.mutable.ArrayBuffer
   *
   * Created by nick on 30/04/2017.
   */
-class BlepParser extends ScheduleParser {
+class BlebParser extends ScheduleParser {
   /**
     * Get the schedule and parse it, returning an array of Program objects.
     *
@@ -26,14 +26,14 @@ class BlepParser extends ScheduleParser {
     // First get today's schedule. The url is slightly different to the remaining days
 
     // URL for today
-    var url = "http://www.bleb.org/tv/all.html?c="+BlepParser.CHANELS+"&all"
+    var url = "http://www.bleb.org/tv/all.html?c="+BlebParser.CHANELS+"&all"
     println("Parsing url for today: "+url)
 
     // Get the schedule
     val doc = Jsoup.connect(url).get();
 
     // Add today's programs
-    progs ++= parseSchedule(doc)
+    progs ++= BlebParser.parseSchedule(doc)
 
     // Now get the schedule for the remaining days
 
@@ -43,12 +43,23 @@ class BlepParser extends ScheduleParser {
     progs
   }
 
+
+
+}
+
+object BlebParser {
+
+  // The chanels to search.
+  val CHANELS = "bbc1+bbc2+bbc_3+bbc4+film_four+ch4+five+e4"
+
+  def apply() = new BlebParser()
+
   /**
     * Parse the html schedule for a particular day
     * @param doc The Jsoup Document
     * @return A list of Program objects
     */
-  private def parseSchedule(doc : Document): ArrayBuffer[Program] = {
+  def parseSchedule(doc : Document): ArrayBuffer[Program] = {
 
     val progs = ArrayBuffer[Program]()
 
@@ -90,7 +101,8 @@ class BlepParser extends ScheduleParser {
           if (row.toString.contains("<i>Film</i>")) {
             // The row should contain two data items - the name of the film and the date
             val data: Elements = row.getElementsByTag("td")
-            assert(data.size() == 2, "I was expecting this row to have two data elements, not " + data.size() + ":\n**ROW**:" + row + "\n**DATA**" + data)
+            assert(data.size() == 2, "I was expecting this row to have two data elements, not " +
+              data.size() + ":\n**ROW**:" + row + "\n**DATA**" + data)
             // The date is the first element
             val date = data.get(0).text()
             // The film is the second element (minus a few characters to get rid of the text 'film' that is
@@ -104,14 +116,5 @@ class BlepParser extends ScheduleParser {
 
     progs
   }
-
-}
-
-object BlepParser {
-
-  // The chanels to search.
-  val CHANELS = "bbc1+bbc2+bbc_3+bbc4+film_four+ch4+five+e4"
-
-  def apply() = new BlepParser()
 
 }
