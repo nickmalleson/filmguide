@@ -8,16 +8,47 @@ import org.scalatest.GivenWhenThen
   */
 class BlebParserSpec extends UnitSpec with GivenWhenThen {
 
-  "The parseSchedule function" should "return X programmes using example data" in {
+  "The parseSchedule function" should "return 10 programmes using example data" in {
 
-    val doc = Jsoup.parse(BlebExampleHTML.x) // Create a document from the test data
+    val doc = Jsoup.parse(BlebExampleHTML.complete_html) // Create a document from the test data
     val progs = BlebParser.parseSchedule(doc)
-
-
+    assert(progs.size == 10)
 
   }
 
+  it should "throw an UnparseableException if it cannot parse the HTML" in {
 
+    Given("Unexpected html")
+    val doc = Jsoup.parse("XYZ") // Create a document from the test data
+
+    Then("An Unparseable Exceptionshould be thrown")
+    an [UnparseableException] should be thrownBy {
+      val progs = BlebParser.parseSchedule(doc)
+    }
+  }
+
+  it should "throw an UnparseableException if it cannot find any programs" in {
+    Given("Incomplete html")
+    val doc = Jsoup.parse(BlebExampleHTML.incomplete_html) // Create a document from the test data
+
+    Then("An Unparseable Exceptionshould be thrown")
+    an [UnparseableException] should be thrownBy {
+      val progs = BlebParser.parseSchedule(doc)
+    }
+  }
+
+  /*
+  it should "throw an UnparseableException if it cannot find any programmes in the example data" in {
+
+    val doc = Jsoup.parse(BlebExampleHTML.x) // Create a document from the test data
+
+
+    val progs = BlebParser.parseSchedule(doc)
+    assert(progs.size == 10)
+    UnparseableException
+  }
+
+*/
 
 
 }

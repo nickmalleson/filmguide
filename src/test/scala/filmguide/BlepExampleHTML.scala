@@ -8,7 +8,7 @@ package filmguide
 object BlebExampleHTML {
 
 
-  val x = """
+  val complete_html = """
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
@@ -203,7 +203,7 @@ width="96" height="12" border="0" id="navshow" /></div>
 <tr><td><b>19:00</b></td><td style="">The One Show </tr>
 <tr><td><b>19:30</b></td><td style="">MasterChef </tr>
 <tr><td><b>20:00</b></td><td style="">EastEnders </tr>
-<tr><td><b>20:30</b></td><td style="background: #dddddd"><a href="http://uk.imdb.com/find?s=tt&q=Saving%20Mr%20Banks">Saving Mr Banks</a> <i>Film</i>
+<tr><td><b>20:30</b></td><td style="background: #dddddd"><a href="http://uk.imdb.com/find?s=tt&q=Saving%20Mr%20Banks">Saving Mr Banks</a> <i>Film (2013)</i>
 </tr>
 <tr><td><b>22:30</b></td><td style="">BBC News </tr>
 <tr><td><b>22:50</b></td><td style="">BBC London News </tr>
@@ -449,6 +449,236 @@ width="96" height="12" border="0" id="navshow" /></div>
 <tr><td><b>05:05</b></td><td style="">Charmed <i><a href="http://www.google.com/search?safe=on&q=%22Charmed%22%20%22Rewitched%22">Rewitched</a></i>
 </tr>
 <tr><td><b>06:00</b></td><td style="">Hollyoaks </tr>
+</table></td>
+</tr></table>
+</div>
+
+<div class="leaderboard">
+<script type="text/javascript"><!--
+google_ad_client = "pub-0631349026081891";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel ="";
+google_ad_type = "text";
+google_color_border = "578A24";
+google_color_bg = "CCFF99";
+google_color_link = "00008B";
+google_color_url = "00008B";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+  
+
+
+<div id="copyright">
+Last modified: <i>Sun Apr 30 05:42:01 2017</i><br />
+&copy; <a href="contact.html">Andrew Flegg</a> 2002.      
+All rights reserved.
+</div> 
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1027412-1";
+urchinTracker();
+</script>
+</body>
+</html>
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  val incomplete_html = """
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>This week's UK television</title>
+<meta name="description" content="This week's UK television listings for all major terrestrial, satellite and cable channels." />
+<meta name="keywords" content="digiguide, this week, today, tv, television, telly, listings, guide, what's on" />
+<meta http-equiv="Content-type" content='text/html; charset="iso-8859-1"' />
+<style type="text/css"><!--
+    @import "/tv/style.css";
+--></style>
+<script type="text/javascript"><!--
+    var show = new Image();
+    var hide = new Image();
+    show.src = "nav-show.gif";
+    hide.src = "nav-hide.gif";
+   
+    function setNav(state) {
+        if (state == -1 && e.visibility != 'visible') state = 1;
+
+        var e = document.getElementById('navigation').style;
+        var p = document.getElementById('navshow');
+        if (state == 1) {
+            e.visibility = 'visible';
+            e.display    = 'block';
+            //p.src        = hide.src;
+        } else {
+            e.visibility = 'hidden';
+            e.display    = 'none';
+            //p.src	 = show.src;
+        }
+        return false;
+    }
+// --></script>
+<link rel="shortcut icon" href="/misc/icon_tv.ico" />
+</head>
+
+<body>
+<h1><a href="/"><span class="logo"></span></a><a href="index.html">This week's UK TV &amp; radio</a></h1>
+
+<p class="ahem">Congratulations on being true to the origins of web browsing. These fancy new browsers supporting
+<a href="http://www.webstandards.org/upgrade/"
+title="WebStandard.org's campaign for modern browsers">web standards</a>,
+such as CSS, just detract from the pure accessibility goodness of this site.</p>
+
+<div style="float:right"><div class="donate"><a href="https://www.paypal.com/xclick/business=andrew%40bleb.org&amp;item_name=bleb.org+donation&amp;no_shipping=1&amp;no_note=1&amp;tax=0&amp;currency_code=GBP"><img src="http://www.paypal.com/en_US/i/btn/x-click-but21.gif" width="110" height="23" alt="[Make a Donation]" /></a></div>
+
+</div>
+<div onMouseOver="setNav(1)" onMouseOut="setNav(0)">
+<div class="navshow" align="center"><img src="nav-show.gif" alt="[vvvv]"
+width="96" height="12" border="0" id="navshow" /></div>
+<div id="navigation" class="overlay">
+
+<h2>Channels</h2><p class="list"><a href="channel.html?ch=bbc1&all&day=1"><b>BBC 1</b></a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc2&all&day=1"><b>BBC 2</b></a>
+<span class="ahem"> | </span> <a href="channel.html?ch=itv1&all&day=1"><b>ITV 1</b></a>
+<span class="ahem"> | </span> <a href="channel.html?ch=ch4&all&day=1"><b>Channel 4</b></a>
+<span class="ahem"> | </span> <a href="channel.html?ch=five&all&day=1"><b>Five</b></a>
+<span class="ahem"> | </span> <a href="channel.html?ch=4music&all&day=1">4music</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=4seven&all&day=1">4seven</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=al_jazeera_english&all&day=1">Al Jazeera English</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc1_hd&all&day=1">BBC 1 HD</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc1_n_ireland&all&day=1">BBC 1 N Ireland</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc1_scotland&all&day=1">BBC 1 Scotland</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc1_wales&all&day=1">BBC 1 Wales</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc2_n_ireland&all&day=1">BBC 2 N Ireland</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc2_scotland&all&day=1">BBC 2 Scotland</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc2_wales&all&day=1">BBC 2 Wales</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc3&all&day=1">BBC 3</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc4&all&day=1">BBC 4</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc7&all&day=1">BBC 7</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc_6music&all&day=1">BBC  6music</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc_hd&all&day=1">BBC HD</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc_news24&all&day=1">BBC News 24</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc_parliament&all&day=1">BBC Parliament</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc_radio1&all&day=1">BBC Radio 1</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc_radio1_xtra&all&day=1">BBC Radio 1 Xtra</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc_radio2&all&day=1">BBC Radio 2</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc_radio3&all&day=1">BBC Radio 3</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc_radio4&all&day=1">BBC Radio 4</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc_radio5_live&all&day=1">BBC Radio 5 Live</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc_radio5_live_sports_extra&all&day=1">BBC Radio 5 Live Sports Extra</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc_radio_scotland&all&day=1">BBC Radio Scotland</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bbc_world_service&all&day=1">BBC World Service</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=boomerang&all&day=1">Boomerang</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=bravo&all&day=1">Bravo</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=british_eurosport&all&day=1">British Eurosport</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=cartoon_network&all&day=1">Cartoon Network</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=cbbc&all&day=1">CBBC</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=cbeebies&all&day=1">Cbeebies</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=ch4_hd&all&day=1">Channel 4 HD</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=challenge&all&day=1">Challenge</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=citv&all&day=1">CITV</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=dave&all&day=1">Dave</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=discovery&all&day=1">Discovery</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=discovery_real_time&all&day=1">Discovery Real Time</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=disney&all&day=1">Disney</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=e4&all&day=1">E4</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=extreme_sports&all&day=1">Extreme Sports</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=film_four&all&day=1">Film Four</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=five_us&all&day=1">Five Us</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=fiver&all&day=1">Fiver</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=fx&all&day=1">Fx</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=ideal_world&all&day=1">Ideal World</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=itv1_hd&all&day=1">ITV 1 HD</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=itv2&all&day=1">ITV 2</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=itv3&all&day=1">ITV 3</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=itv4&all&day=1">ITV 4</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=living_tv&all&day=1">Living Tv</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=men_and_motors&all&day=1">Men And Motors</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=more4&all&day=1">More 4</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=mtv&all&day=1">Mtv</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=nick_junior&all&day=1">Nick Junior</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=nickelodeon&all&day=1">Nickelodeon</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=oneword&all&day=1">Oneword</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=paramount&all&day=1">Paramount</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=paramount2&all&day=1">Paramount 2</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=qvc&all&day=1">Qvc</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=s4c&all&day=1">S4c</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=s4c2&all&day=1">S4c 2</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=scifi&all&day=1">Scifi</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_atlantic&all&day=1">Sky Atlantic</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_movies_action_thriller&all&day=1">Sky Movies Action Thriller</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_movies_classics&all&day=1">Sky Movies Classics</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_movies_comedy&all&day=1">Sky Movies Comedy</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_movies_crime_thriller&all&day=1">Sky Movies Crime Thriller</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_movies_drama&all&day=1">Sky Movies Drama</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_movies_family&all&day=1">Sky Movies Family</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_movies_hd1&all&day=1">Sky Movies HD 1</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_movies_hd2&all&day=1">Sky Movies HD 2</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_movies_indie&all&day=1">Sky Movies Indie</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_movies_modern_greats&all&day=1">Sky Movies Modern Greats</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_movies_premiere&all&day=1">Sky Movies Premiere</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_movies_sci-fi_horror&all&day=1">Sky Movies Sci-fi Horror</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_movies_showcase&all&day=1">Sky Movies Showcase</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_news&all&day=1">Sky News</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_one&all&day=1">Sky One</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_sports1&all&day=1">Sky Sports 1</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_sports2&all&day=1">Sky Sports 2</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_sports3&all&day=1">Sky Sports 3</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_sports_f1&all&day=1">Sky Sports F 1</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_sports_news&all&day=1">Sky Sports News</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_sports_xtra&all&day=1">Sky Sports Xtra</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_three&all&day=1">Sky Three</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_travel&all&day=1">Sky Travel</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=sky_two&all&day=1">Sky Two</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=tcm&all&day=1">Tcm</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=teachers_tv&all&day=1">Teachers Tv</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=tmf&all&day=1">Tmf</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=uk_gold&all&day=1">UK Gold</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=uktv_style&all&day=1">UKTV Style</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=vh1&all&day=1">Vh 1</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=virgin1&all&day=1">Virgin 1</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=watch&all&day=1">Watch</a>
+<span class="ahem"> | </span> <a href="channel.html?ch=yesterday&all&day=1">Yesterday</a>
+</p><ul class="actions"><li class="first"><a href="/tv/all.html?c=bbc1+bbc2+bbc_3+bbc4+film_four+ch4+five+e4&day=1&amp;favourites">Favourites</a><br /></li></ul><div>&nbsp;</div><h2>Views</h2>
+<ul><li><a href="all.html?c=bbc1+bbc2+itv1+ch4+five">Terrestrial (small)</a></li>
+<li><a href="align.html?c=bbc1+bbc2+itv1+ch4+five">Terrestrial (align)</a></li>
+<li><a href="align.html?c=bbc1+bbc2+bbc_3+bbc4+film_four+ch4+five+e4&all&day=1">Toggle alignment</a></li><li><a href="advanced.html">Advanced</a> (incl. full desc.)</li></ul>
+
+</div>
+</div>
+
+<div style="margin-left: 15%; padding-left: 2em">
+
+<a href="/tv/all.html?c=bbc1+bbc2+bbc_3+bbc4+film_four+ch4+five+e4&all&amp;day=-1">Saturday</a> : <a href="/tv/all.html?c=bbc1+bbc2+bbc_3+bbc4+film_four+ch4+five+e4&all&amp;day=0">Sunday</a> : <b>Monday</b> : <a href="/tv/all.html?c=bbc1+bbc2+bbc_3+bbc4+film_four+ch4+five+e4&all&amp;day=2">Tuesday</a> : <a href="/tv/all.html?c=bbc1+bbc2+bbc_3+bbc4+film_four+ch4+five+e4&all&amp;day=3">Wednesday</a> : <a href="/tv/all.html?c=bbc1+bbc2+bbc_3+bbc4+film_four+ch4+five+e4&all&amp;day=4">Thursday</a> : <a href="/tv/all.html?c=bbc1+bbc2+bbc_3+bbc4+film_four+ch4+five+e4&all&amp;day=5">Friday</a> : <a href="/tv/all.html?c=bbc1+bbc2+bbc_3+bbc4+film_four+ch4+five+e4&all&amp;day=6">Saturday</a>
+
+</div>
+
+
+
+<div id="content" style="margin-left: 0px; padding-left: 1em; clear: both">
+<table class="small-listings"><tr>
+
 </table></td>
 </tr></table>
 </div>

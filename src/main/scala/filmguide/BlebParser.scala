@@ -6,13 +6,18 @@ import org.jsoup.select.Elements
 
 import scala.collection.JavaConverters._
 import scala.collection.mutable.ArrayBuffer
+import scala.util.matching.Regex
 
 /**
   * Parser for data on http://www.bleb.org/
   *
   * Created by nick on 30/04/2017.
   */
-class BlebParser extends ScheduleParser {
+object BlebParser extends ScheduleParser {
+
+  // The chanels to search.
+  val CHANELS = "bbc1+bbc2+bbc_3+bbc4+film_four+ch4+five+e4"
+
   /**
     * Get the schedule and parse it, returning an array of Program objects.
     *
@@ -45,19 +50,13 @@ class BlebParser extends ScheduleParser {
 
 
 
-}
-
-object BlebParser {
-
-  // The chanels to search.
-  val CHANELS = "bbc1+bbc2+bbc_3+bbc4+film_four+ch4+five+e4"
-
-  def apply() = new BlebParser()
 
   /**
     * Parse the html schedule for a particular day
     * @param doc The Jsoup Document
     * @return A list of Program objects
+    * @throws UnparseableException if it cannot parse the html
+    * X
     */
   def parseSchedule(doc : Document): ArrayBuffer[Program] = {
 
@@ -66,9 +65,16 @@ object BlebParser {
     // Get the div='content' section
     val content : Element = doc.getElementById("content");
 
+    if (content==null) {
+      throw new UnparseableException("Could not find the 'content' element in the html.")
+    }
+
     // There is one big table, then separate tables for each channel
     val bigTables = content.getElementsByClass("small-listings")
-    assert(bigTables.size() == 1, "Was only expeting one table of class 'small-listings', not "+bigTables.size())
+
+    if (bigTables.size != 1) {
+      throw new UnparseableException("Was only expeting one table of class 'small-listings', not " + bigTables.size())
+    }
     val bigTable = bigTables.get(0)
 
     //println("*************************** BIG TABLE ***************************")
@@ -77,7 +83,14 @@ object BlebParser {
 
     val smallTables = bigTable.getElementsByTag("table")
 
-    println("Found "+smallTables.size()+" small tables")
+    // If there are fewer than 2 entries then it couldn't find any programs (see next comment for why this is fewer
+    // than 2 rather than 1
+    if (smallTables.size <= 1) {
+      throw new UnparseableException("Did not get any programs in the html")
+
+    }
+
+    // println("Found "+smallTables.size()+" small tables")
 
     //println("*************************** SMALL TABLE 1 ***************************")
     //println(smallTables.get(0))
@@ -98,21 +111,24 @@ object BlebParser {
           //println("\tROW" + row)
 
           // See if this row contains a film, otherwise ignore it
-          if (row.toString.contains("<i>Film</i>")) {
-            // The row should contain two data items - the name of the film and the date
-            val data: Elements = row.getElementsByTag("td")
-            assert(data.size() == 2, "I was expecting this row to have two data elements, not " +
-              data.size() + ":\n**ROW**:" + row + "\n**DATA**" + data)
-            // The date is the first element
-            val date = data.get(0).text()
-            // The film is the second element (minus a few characters to get rid of the text 'film' that is
-            // appended to the end of the film name.
-            val name = data.get(1).text().substring(0, data.get(1).text().size-5)
-            println("\t" + date + " ---- " + name)
+          val pat = "<i>Film(x)?</i>".r
+          if (row.toString.contains(pat)) {
+              // The row should contain two data items - the name of the film and the date
+              val data: Elements = row.getElementsByTag("td")
+              assert(data.size() == 2, "I was expecting this row to have two data elements, not " +
+                data.size() + ":\n**ROW**:" + row + "\n**DATA**" + data)
+              // The date is the first element
+              val date = data.get(0).text()
+              // The film is the second element (minus a few characters to get rid of the text 'film' that is
+              // appended to the end of the film name.
+              val name = data.get(1).text().substring(0, data.get(1).text().size-5)
+              println("\t" + date + " ---- " + name)
+              progs += new Program(name, date)
+            }
           }
         }
       }
-    }
+
 
     progs
   }
