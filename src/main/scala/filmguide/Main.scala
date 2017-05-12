@@ -32,8 +32,6 @@ case class Program ( name: String, scheduled:String) {
 
 }
 
-package filmguide
-
 import scala.collection.mutable.ArrayBuffer
 
 /**
