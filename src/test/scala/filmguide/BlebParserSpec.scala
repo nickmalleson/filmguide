@@ -3,16 +3,44 @@ package filmguide
 import org.jsoup.Jsoup
 import org.scalatest.GivenWhenThen
 
+import scala.collection.mutable.ArrayBuffer
+
 /**
   * Created by nick on 05/05/2017.
   */
-class BlebParserSpec extends UnitSpec with GivenWhenThen {
+class BlebParserSpec extends UnitSpec {
+
+  "The match function" should "be able to match films" in {
+
+    val films = Array(
+      "A League of Their Own</a> <i>Film (1992)",   // Film
+      "The House of Magic</a> <i>Film (2013)</i>",  // Film
+      "Clash of the Titans</a> <i>Film</i>",         // Film
+      "The Staircase Implementation</a></i>",       // Not film
+      "Film Four" // Not film
+    )
+    val isFilm = Array(true, true, true, false, false)
+
+    (films, isFilm).zipped.foreach( (text, isAFilm) => {
+        Given(text)
+        val m = BlebParser.matches(text)
+        Then( if (isAFilm) "A match should be found" else  "No match should be found")
+        assert(m == isAFilm)
+      }
+    )
+
+
+
+
+
+  }
 
   "The parseSchedule function" should "return 10 programmes using example data" in {
 
     val doc = Jsoup.parse(BlebExampleHTML.complete_html) // Create a document from the test data
     val progs = BlebParser.parseSchedule(doc)
-    assert(progs.size == 10)
+    println("Found the following programs:\n"+ (for (prog <- progs) yield prog+"\n").toString() )
+    assert(progs.size == 17)
 
   }
 

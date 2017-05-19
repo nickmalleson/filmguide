@@ -6,9 +6,10 @@ package filmguide
   *
   * @constructor Creates a new programme with a name and scheduled date
   * @param name The name of the programme
-  * @param scheduled The date that the programme is scheduled to take place
   */
-case class Program ( name: String, scheduled:String) {
+case class Program ( name: String ) {
 
+
+  override def toString: String = name
 
 }

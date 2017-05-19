@@ -1,6 +1,5 @@
 package filmguide
 
-import scala.collection.mutable.ArrayBuffer
 
 /**
   * Super class for the code to parse the TV listing information
@@ -11,7 +10,7 @@ trait ScheduleParser {
   /**
     * Get the schedule and parse it, returning an array of Program objects.
     */
-  def getProgrammes(): ArrayBuffer[Program]
+  def getProgrammes(): Iterable[Program]
 
 
 
