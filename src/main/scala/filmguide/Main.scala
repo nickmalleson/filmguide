@@ -17,7 +17,7 @@ object Main {
 
     val ratings = ArrayBuffer[Rating]()
     for (prog <- programmes) {
-      ratings ++= IMDBRater.lookup(prog)
+      ratings += OMDBRater.lookup(prog)
     }
 
   }

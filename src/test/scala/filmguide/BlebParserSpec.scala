@@ -29,10 +29,6 @@ class BlebParserSpec extends UnitSpec {
       }
     )
 
-
-
-
-
   }
 
   "The parseSchedule function" should "return 10 programmes using example data" in {
