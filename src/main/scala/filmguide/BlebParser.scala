@@ -38,7 +38,7 @@ object BlebParser extends ScheduleParser {
     val doc = Jsoup.connect(url).get();
 
     // Add today's programs
-    progs ++= BlebParser.parseSchedule(doc)
+    progs ++= BlebParser._parseSchedule(doc)
 
     // XXXX HERE
 
@@ -59,7 +59,7 @@ object BlebParser extends ScheduleParser {
     * @return A list of Program objects
     * @throws UnparseableException if it cannot parse the html
     */
-  def parseSchedule(doc : Document): Iterable[Program] = {
+  def _parseSchedule(doc : Document): Iterable[Program] = {
 
     val progs = Set[Program]()
 
@@ -112,7 +112,7 @@ object BlebParser extends ScheduleParser {
           //println("\tROW" + row)
 
           // See if this row contains a film, otherwise ignore it
-          if (BlebParser.matches(row.toString)) {
+          if (BlebParser._matches(row.toString)) {
               // The row should contain two data items - the name of the film and the date
               val data: Elements = row.getElementsByTag("td")
               if (data.size() != 2) {
@@ -142,7 +142,7 @@ object BlebParser extends ScheduleParser {
     * @param row
     * @return
     */
-  def matches(row:String): Boolean = {
+  def _matches(row:String): Boolean = {
 
 //    val pat = "<i>Film(x)?</i>".r
     return row.contains("Film</i") || row.contains("Film (")

@@ -23,7 +23,7 @@ class BlebParserSpec extends UnitSpec {
 
     (films, isFilm).zipped.foreach( (text, isAFilm) => {
         Given(text)
-        val m = BlebParser.matches(text)
+        val m = BlebParser._matches(text)
         Then( if (isAFilm) "A match should be found" else  "No match should be found")
         assert(m == isAFilm)
       }
@@ -34,7 +34,7 @@ class BlebParserSpec extends UnitSpec {
   "The parseSchedule function" should "return 10 programmes using example data" in {
 
     val doc = Jsoup.parse(BlebExampleHTML.complete_html) // Create a document from the test data
-    val progs = BlebParser.parseSchedule(doc)
+    val progs = BlebParser._parseSchedule(doc)
     println("Found the following programs:\n"+ (for (prog <- progs) yield prog+"\n").toString() )
     assert(progs.size == 17)
 
@@ -47,7 +47,7 @@ class BlebParserSpec extends UnitSpec {
 
     Then("An Unparseable Exceptionshould be thrown")
     an [UnparseableException] should be thrownBy {
-      val progs = BlebParser.parseSchedule(doc)
+      val progs = BlebParser._parseSchedule(doc)
     }
   }
 
@@ -57,7 +57,7 @@ class BlebParserSpec extends UnitSpec {
 
     Then("An Unparseable Exceptionshould be thrown")
     an [UnparseableException] should be thrownBy {
-      val progs = BlebParser.parseSchedule(doc)
+      val progs = BlebParser._parseSchedule(doc)
     }
   }
 

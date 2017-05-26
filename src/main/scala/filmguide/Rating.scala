@@ -6,10 +6,9 @@ package filmguide
   *
   * @param rating The rating itself (e.g. 4.5)
   * @param outOf The maximum rating a program could get
-  * @param agency The company who do the rating
+  * @param p The program associated with this rating
   */
-case class Rating (val rating:Float, val outOf:Int, val agency:String ){
-
+case class Rating (val rating:Float, val outOf:Int, val p: Program){
 
 
 }

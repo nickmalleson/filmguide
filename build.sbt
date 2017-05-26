@@ -9,3 +9,4 @@ libraryDependencies += "org.scalatest" % "scalatest_2.12" % "3.0.0"
 
 // For jsoup (java scraping library)
 libraryDependencies += "org.jsoup" % "jsoup" % "1.6.1"
+
