@@ -40,9 +40,7 @@ object BlebParser extends ScheduleParser {
     // Add today's programs
     progs ++= BlebParser._parseSchedule(doc)
 
-    // XXXX HERE
-
-    // Now get the schedule for the remaining days
+    // TODO Now get the schedule for the remaining days
 
     // URL for remaining days (see '&day=X' at the end):
     //"http://www.bleb.org/tv/all.html?c="+BlepParser.CHANELS+"&all&day=1"

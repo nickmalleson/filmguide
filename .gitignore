@@ -18,3 +18,7 @@ target
 .idea
 out
 
+
+# IMDB ratings - I don't think that these should be included in the repository. They downloaded
+# from: ftp://ftp.fu-berlin.de/pub/misc/movies/database/ratings.list.gz
+resources/ratings.list
