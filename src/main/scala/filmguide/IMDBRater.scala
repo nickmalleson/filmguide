@@ -41,29 +41,47 @@ object IMDBRater extends RatingLookup {
     // A pattern to match the relevant lines with named groups
     val pat = new Regex("""\s+..........\s+(\d+)\s+(\d\.\d)\s+(.+)""", "num_votes", "rating", "title")
 
-
-
+    // Store a tuple of (num votes, rating) for each film.
+    val ratingsDict = scala.collection.mutable.HashMap[String,(Int,Float)]()
 
     try {
       for (line <- (Source.fromFile(RATINGS_FILE)(io.Codec("latin1"))).getLines()) {
 
-        println(line)
+        //println(line)
 
-        // Look for a line that is in the right format
-        for (matchString <- pat.findAllIn(line)) {
-          // XXXX HERE WORK OUT HOW TO ACCESS THE GROUPS
-          println("\t",matchString.toString)
-          println("\t",matchString.group("num_votes", "rating", "title")))
-        }
+        // Look for a line that is in the right format. The findFirstMatchIn returns an Option
+        // (Some if a match was found (in which case refer to the result object as 'r'), None otherwise)
+        val result = pat.findFirstMatchIn(line)
+        result match {
 
+          case None => _ // No match - not a film rating line
 
+          case Some(r) => { // Have matched the line, so this is a film
+            //println(line+"\n\t"+r.group("num_votes") + ", " + r.group("rating")+" , "+r.group("title"))
+            val votes  = r.group("num_votes").toInt
+            val rating = r.group("rating").toFloat
+            val title  = r.group("title")
+            if (ratingsDict.contains(title)) {
+              // TODO check to see if the map already contains the film. If so, accept a replacement entry only if it has more votes
+            }
+            else {
+              ratingsDict += (title -> (votes,rating))
 
+            }
 
-      }
+          } // case
+
+        } // match
+
+      } // for lines
     } catch {
       case ex: Exception => println("Got an exception when reading the file:", ex.toString)
+
     }
 
+    print(ratingsDict)
+
+    // TODO return the ratingsDict in the required format (String->Float) (can forget about number of votes)
 
     return Map("Title"->5f)
 
