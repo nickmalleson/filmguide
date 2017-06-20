@@ -5,8 +5,8 @@ package filmguide
   */
 trait RatingLookup {
   /**
-    * Look up the given program for its rating
+    * Look up the given program for its rating (returning None if it can't be found)
     */
-  def lookup(prog:Program): Rating
+  def lookup(prog:Program): Option[Rating]
 
 }

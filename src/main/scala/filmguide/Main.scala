@@ -17,10 +17,18 @@ object Main {
 
     val ratings = ArrayBuffer[Rating]()
     for (prog <- programmes) {
-      ratings += IMDBRater.lookup(prog)
+      IMDBRater.lookup(prog) match {
+        case None => // No match, do nothing
+        case Some(rating) => ratings += rating // Found the film, add its rating to the list
+        //case None => println("Could not match film: "+prog.name)
+
+      }
     }
 
-  }
+    // TODO Display films ordered by rating
+    println(ratings.mkString("\n"))
+
+  } // main
 
 }
 
