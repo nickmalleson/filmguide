@@ -16,7 +16,7 @@ import scala.util.matching.Regex
 object BlebParser extends ScheduleParser {
 
   // The chanels to search.
-  val CHANELS = "bbc1+bbc2+bbc_3+bbc4+film_four+ch4+five+e4"
+  val CHANELS = "bbc1+bbc2+bbc4+film_four+ch4+five+e4+itv+itv3+itv4"
 
   /**
     * Get the schedule and parse it, returning an array of Program objects.
@@ -28,19 +28,21 @@ object BlebParser extends ScheduleParser {
     // List of programs that is gradually populated
     var progs = Set[Program]()
 
-    // First get today's schedule. The url is slightly different to the remaining days
+    // Go through all days, each one has a different url (happily 0 is today)
+    //for (day <- 0)
+    for (day <- 0.until(6) )
+    {
+      var url = "http://www.bleb.org/tv/all.html?c="+BlebParser.CHANELS+"&all&day="+day
+      println("Parsing url for day"+day+": "+url)
 
-    // URL for today
-    var url = "http://www.bleb.org/tv/all.html?c="+BlebParser.CHANELS+"&all"
-    println("Parsing url for today: "+url)
+      // Get the schedule
+      val doc = Jsoup.connect(url).get();
 
-    // Get the schedule
-    val doc = Jsoup.connect(url).get();
+      // Add today's programs
+      progs ++= BlebParser._parseSchedule(doc)
 
-    // Add today's programs
-    progs ++= BlebParser._parseSchedule(doc)
-
-    // TODO Now get the schedule for the remaining days
+      Thread.sleep(1000) // Wait a second before getting the next page
+    } // for each day
 
     // URL for remaining days (see '&day=X' at the end):
     //"http://www.bleb.org/tv/all.html?c="+BlepParser.CHANELS+"&all&day=1"
