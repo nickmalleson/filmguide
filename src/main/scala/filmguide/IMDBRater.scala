@@ -88,7 +88,7 @@ object IMDBRater extends RatingLookup {
             if (ratingsDict.contains(title)) {
               // The dict already contains the film.  Accept  this as replacement entry only if it has more votes
               val (v, r) = ratingsDict(title)
-              if (v > votes) {
+              if (votes > v) {
                 //println("\tReplacing film", v, votes, title, rating)
                 ratingsDict += (title -> (votes,rating))
               }
